@@ -49,8 +49,7 @@ public static class RegExpr
 
     public static IEnumerable<(Uri, string)> Urls(string html)
     {
-        //string pattern = @"<a\s+href=""(?<url>https?:\/\/""*)""(?:\stitle=""(?<title>.*?)"")?>(?<inner>.*?)<\/a>";
-        string pattern = @"href=""(?<url>.*?)"".*?(?:(?:title=""(?<title>.*?)"")|(?:>(?<innerText>.*?)<\/a>))";
+        string pattern = @"<a\s+href=""(?<url>https?:\/\/[^""]*)""(?:\stitle=""(?<title>.*?)"")?>(?<innerText>.*?)<\/a>";
 
         MatchCollection matches = Regex.Matches(html, pattern);
         foreach(Match match in matches)
